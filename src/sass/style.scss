@@ -17,23 +17,51 @@
 // Sass Library
 @use 'sass:string';
 
-$primary-color: #ff5c5c;
-$primary-variant: #ff2d2d;
-$secondary-color: #1b9999;
-$on-primary: #fafafa;
-$on-background: #424242;
-$on-background-alt: rgba(66, 66, 66, 0.702);
-$background: #ffffff;
-$box-shadow: 0 0.5rem 2rem 1rem rgba(0, 0, 0, 0.502);
+// SASS Variables - Light Theme
+$primary-color-light: #ff5c5c;
+$primary-variant-light: #ff2d2d;
+$secondary-color-light: #1b9999;
+$on-primary-light: #fafafa;
+$on-background-light: #424242;
+$on-background-alt-light: rgba(66, 66, 66, 0.702);
+$background-light: #ffffff;
 
-[data-theme='dark'] {
-  $primary-color: #9641ff;
-  $primary-variant: #6c63ff;
-  $secondary-color: #03dac5;
-  $on-primary: #000;
-  $on-background: rgba(255, 255, 255, 0.902);
-  $on-background-alt: rgba(255, 255, 255, 0.702);
-  $background: #121212;
+// SASS Variables - Dark Theme
+$primary-color-dark: #9641ff;
+$primary-variant-dark: #6c63ff;
+$secondary-color-dark: #03dac5;
+$on-primary-dark: #000;
+$on-background-dark: rgba(255, 255, 255, 0.902);
+$on-background-alt-dark: rgba(255, 255, 255, 0.702);
+$background-dark: #121212;
+
+:root {
+  --primary-color: #{$primary-color-light};
+  --primary-variant: #{$primary-variant-light};
+  --secondary-color: #{$secondary-color-light};
+  --on-primary: #{$on-primary-light};
+  --on-background: #{$on-background-light};
+  --on-background-alt: #{$on-background-alt-light};
+  --background: #{$background-light};
+  --box-shadow: 0 0.5rem 2rem 1rem rgba(0, 0, 0, 0.502);
+
+  body {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cpath fill='%23#{string.slice(#{$secondary-color-light}, 2)}' fill-opacity='0.3' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
+  }
+}
+
+:root[data-theme='dark'] {
+  --primary-color: #{$primary-color-dark};
+  --primary-variant: #{$primary-variant-dark};
+  --secondary-color: #{$secondary-color-dark};
+  --on-primary: #{$on-primary-dark};
+  --on-background: #{$on-background-dark};
+  --on-background-alt: #{$on-background-alt-dark};
+  --background: #{$background-dark};
+
+  body {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cpath fill='%23#{string.slice(#{$secondary-color-dark}, 2)}' fill-opacity='0.3' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
+  }
 }
 
 * {
@@ -43,17 +71,16 @@ $box-shadow: 0 0.5rem 2rem 1rem rgba(0, 0, 0, 0.502);
 }
 
 html {
-  /* 10px = 1rem */
-  font-size: 62.5%;
+  /* 16px = 1rem */
+  font-size: 100%;
   scroll-behavior: smooth;
 }
 
 body {
-  color: $on-background;
+  color: var(--on-background);
   font-family: 'Comfortaa', sans-serif;
 
-  background-color: $background;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cpath fill='%23#{string.slice(#{$secondary-color}, 2)}' fill-opacity='0.3' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
+  background-color: var(--background);
 }
 
 main {
@@ -62,6 +89,8 @@ main {
 }
 
 section {
+  padding-top: 9rem;
+
   min-height: 100vh;
 
   display: flex;
@@ -71,6 +100,8 @@ section {
 }
 
 h1 {
+  text-align: center;
+
   font-family: 'Kaushan Script', sans-serif;
   font-size: 10rem;
 
@@ -78,7 +109,9 @@ h1 {
 }
 
 h2 {
-  color: $on-background-alt;
+  text-align: center;
+
+  color: var(--on-background-alt);
   font-size: 3.2rem;
   font-weight: normal;
 }
@@ -88,6 +121,7 @@ nav {
   z-index: 10;
 
   width: 100vw;
+  height: 9rem;
   padding: 2.5rem;
 
   position: fixed;
@@ -102,7 +136,7 @@ nav {
 a {
   margin-right: 2.5rem;
 
-  color: $primary-color;
+  color: var(--primary-color);
   font-weight: bold;
   text-decoration: none;
 
@@ -111,7 +145,7 @@ a {
 
 a:hover,
 a:focus {
-  color: $on-background;
+  color: var(--on-background);
 
   border-bottom: 0.3rem solid;
 }
@@ -123,20 +157,27 @@ a:focus {
 
 /* About Section */
 .about-container {
+  width: 90vw;
+
   display: flex;
+  justify-content: center;
+  gap: 2.5rem;
 }
 
 .image-container {
   width: auto;
 
-  border: 0.1rem solid $secondary-color;
+  border: 0.1rem solid var(--secondary-color);
   border-radius: 1rem;
-  box-shadow: $box-shadow;
+  box-shadow: var(--box-shadow);
 
   padding: 1rem 2rem;
-  margin-right: 2.5rem;
 
-  background: $background;
+  background: var(--background);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 img {
@@ -148,6 +189,10 @@ img {
 .buttons {
   margin-top: 1.5rem;
   margin-bottom: 5rem;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
 }
 
 button {
@@ -157,10 +202,8 @@ button {
   height: 4rem;
 
   outline: none;
-  border: 0.2rem solid $primary-color;
+  border: 0.2rem solid var(--primary-color);
   border-radius: 1rem;
-
-  margin-right: 1rem;
 
   font-size: 1.5rem;
 }
@@ -176,40 +219,40 @@ button:hover:not(.outline) {
 }
 
 .primary {
-  color: $on-primary;
+  color: var(--on-primary);
 
-  background: $primary-color;
+  background: var(--primary-color);
 }
 
 .secondary {
-  border: 0.2rem solid $secondary-color;
+  border: 0.2rem solid var(--secondary-color);
 }
 
 .secondary,
 .secondary:hover,
 .outline.secondary:hover {
-  color: $on-primary;
+  color: var(--on-primary);
 
-  background: $secondary-color;
+  background: var(--secondary-color);
 }
 
 .outline {
-  color: $on-background;
+  color: var(--on-background);
 
-  background: $background;
+  background: var(--background);
 }
 
 .outline:hover {
-  color: $on-primary;
+  color: var(--on-primary);
 
-  background: $primary-color;
+  background: var(--primary-color);
 }
 
 .text-box {
-  width: 40%;
+  width: 60%;
   padding: 3rem;
 
-  color: $on-primary;
+  color: var(--on-primary);
   text-align: justify;
 
   background: rgba(0, 0, 0, 0.5);
@@ -221,21 +264,25 @@ p {
   margin: 0;
 
   font-size: 1.5rem;
-  line-height: 2.5rem;
+  line-height: 1.5;
 }
 
 /* Contact Section */
+.social-icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5rem;
+}
+
 .fa-brands {
   cursor: pointer;
 
-  margin-right: 5rem;
-
-  color: $primary-color;
-  font-size: 10rem;
+  color: var(--primary-color);
+  font-size: 15rem;
 }
 
 .fa-brands:hover {
-  color: $on-background;
+  color: var(--on-background);
 }
 
 /* Dark Mode Toggle */
@@ -251,9 +298,12 @@ p {
 }
 
 .theme-switch-wrapper span {
-  font-size: 1.5rem;
+  font-size: 2rem;
 
   margin-right: 1rem;
+
+  display: flex;
+  align-items: center;
 }
 
 .toggle-text {
@@ -261,7 +311,7 @@ p {
   top: -0.4rem;
   right: 0.5rem;
 
-  color: $on-background;
+  color: var(--on-background);
 }
 
 .theme-switch {
@@ -307,7 +357,7 @@ p {
 }
 
 input:checked + .slider {
-  background: $primary-color;
+  background: var(--primary-color);
 }
 
 input:checked + .slider::before {
@@ -322,8 +372,106 @@ input:checked + .slider::before {
   border-radius: 50%;
 }
 
-.fas {
+.fa-solid {
   font-size: 3rem;
 
   margin-right: 0.5rem;
+}
+
+// Media Query: Monitor 2K (1920px)
+@media screen and (max-width: 120em) {
+  html {
+    /* 12px = 1rem */
+    font-size: 62.5%;
+  }
+}
+
+// Media Query: Small Laptop (1120px)
+@media screen and (max-width: 70em) {
+  html {
+    /* 8px = 1rem */
+    font-size: 50%;
+  }
+}
+
+// Media Query: Large Tablet (880px)
+@media screen and (max-width: 55em) {
+  html {
+    /* 6px = 1rem */
+    font-size: 37.5%;
+  }
+
+  .text-box {
+    width: 80%;
+  }
+
+  p {
+    font-size: 2.5rem;
+  }
+
+  button {
+    min-width: 15rem;
+    height: 6rem;
+
+    font-size: 2.5rem;
+  }
+}
+
+// Media Query: Medium Tablet (680px)
+@media screen and (max-width: 42.5em) {
+  html {
+    /* 5px = 1rem */
+    font-size: 31.5%;
+  }
+}
+
+// Media Query: Small Tablet (580px)
+@media screen and (max-width: 35em) {
+  html {
+    /* 4px = 1rem */
+    font-size: 25%;
+  }
+}
+
+// Media Query: Large Mobile (432px)
+@media screen and (max-width: 27em) {
+  h2 {
+    font-size: 6.4rem;
+  }
+
+  .about-container {
+    margin-top: 3rem;
+
+    flex-direction: column;
+  }
+
+  img {
+    width: 60rem;
+    height: 60rem;
+  }
+
+  .buttons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  button {
+    min-width: 25rem;
+    height: 8rem;
+
+    font-size: 3.5rem;
+  }
+
+  p {
+    text-align: center;
+    font-size: 3.5rem;
+  }
+}
+
+// Media Query: Small Mobile (384px)
+@media screen and (max-width: 24em) {
+  html {
+    /* 3px = 1rem */
+    font-size: 18.75%;
+  }
 }
