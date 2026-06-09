@@ -1,3 +1,20 @@
+// customize variables
+@use './fontawesome/variables' with (
+  // customizing $font-path
+  $font-path: '../assets/fonts'
+);
+
+// load Font Awesome core
+@use './fontawesome/fontawesome';
+
+// load and make available Font Awesome helpers (mixins, functions, and variables)
+@use './fontawesome/fa' as fa;
+
+// load individual Font Awesome styles - add only the ones you plan to use in your project. Here is an example of a project using Classic Solid, Brands, Duotone Solid, and Sharp Duotone Solid icons...
+@use './fontawesome/solid' as fa-solid;
+@use './fontawesome/brands' as fa-brands;
+
+// Sass Library
 @use 'sass:string';
 
 $primary-color: #ff5c5c;
@@ -7,7 +24,7 @@ $on-primary: #fafafa;
 $on-background: #424242;
 $on-background-alt: rgba(66, 66, 66, 0.702);
 $background: #ffffff;
-$box-shadow: 0 5px 20px 1px rgba(0, 0, 0, 0.502);
+$box-shadow: 0 0.5rem 2rem 1rem rgba(0, 0, 0, 0.502);
 
 [data-theme='dark'] {
   $primary-color: #9641ff;
@@ -28,10 +45,13 @@ $box-shadow: 0 5px 20px 1px rgba(0, 0, 0, 0.502);
 html {
   /* 10px = 1rem */
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
   color: $on-background;
+  font-family: 'Comfortaa', sans-serif;
+
   background-color: $background;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cpath fill='%23#{string.slice(#{$secondary-color}, 2)}' fill-opacity='0.3' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
 }
@@ -39,4 +59,271 @@ body {
 main {
   min-height: 100vh;
   min-width: 100vw;
+}
+
+section {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: 'Kaushan Script', sans-serif;
+  font-size: 10rem;
+
+  margin-bottom: 0;
+}
+
+h2 {
+  color: $on-background-alt;
+  font-size: 3.2rem;
+  font-weight: normal;
+}
+
+/* Navigation */
+nav {
+  z-index: 10;
+
+  width: 100vw;
+  padding: 2.5rem;
+
+  position: fixed;
+
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.4rem;
+  letter-spacing: 0.3rem;
+
+  background: rgba(255, 255, 255, 0.5);
+}
+
+a {
+  margin-right: 2.5rem;
+
+  color: $primary-color;
+  font-weight: bold;
+  text-decoration: none;
+
+  border-bottom: 0.3rem solid transparent;
+}
+
+a:hover,
+a:focus {
+  color: $on-background;
+
+  border-bottom: 0.3rem solid;
+}
+
+/* Home Section */
+.title-group {
+  text-align: center;
+}
+
+/* About Section */
+.about-container {
+  display: flex;
+}
+
+.image-container {
+  width: auto;
+
+  border: 0.1rem solid $secondary-color;
+  border-radius: 1rem;
+  box-shadow: $box-shadow;
+
+  padding: 1rem 2rem;
+  margin-right: 2.5rem;
+
+  background: $background;
+}
+
+img {
+  width: 30rem;
+  height: 30rem;
+}
+
+/* Projects Section */
+.buttons {
+  margin-top: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+button {
+  cursor: pointer;
+
+  min-width: 10rem;
+  height: 4rem;
+
+  outline: none;
+  border: 0.2rem solid $primary-color;
+  border-radius: 1rem;
+
+  margin-right: 1rem;
+
+  font-size: 1.5rem;
+}
+
+button:disabled {
+  cursor: default;
+
+  opacity: 0.4;
+}
+
+button:hover:not(.outline) {
+  filter: brightness(110%);
+}
+
+.primary {
+  color: $on-primary;
+
+  background: $primary-color;
+}
+
+.secondary {
+  border: 0.2rem solid $secondary-color;
+}
+
+.secondary,
+.secondary:hover,
+.outline.secondary:hover {
+  color: $on-primary;
+
+  background: $secondary-color;
+}
+
+.outline {
+  color: $on-background;
+
+  background: $background;
+}
+
+.outline:hover {
+  color: $on-primary;
+
+  background: $primary-color;
+}
+
+.text-box {
+  width: 40%;
+  padding: 3rem;
+
+  color: $on-primary;
+  text-align: justify;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  border-radius: 1rem;
+}
+
+p {
+  margin: 0;
+
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+
+/* Contact Section */
+.fa-brands {
+  cursor: pointer;
+
+  margin-right: 5rem;
+
+  color: $primary-color;
+  font-size: 10rem;
+}
+
+.fa-brands:hover {
+  color: $on-background;
+}
+
+/* Dark Mode Toggle */
+.theme-switch-wrapper {
+  z-index: 100;
+
+  position: fixed;
+  right: 2.5rem;
+  top: 3rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch-wrapper span {
+  font-size: 1.5rem;
+
+  margin-right: 1rem;
+}
+
+.toggle-text {
+  position: relative;
+  top: -0.4rem;
+  right: 0.5rem;
+
+  color: $on-background;
+}
+
+.theme-switch {
+  display: inline-block;
+
+  position: relative;
+
+  height: 3.4rem;
+  width: 6rem;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  cursor: pointer;
+
+  background: #ccc;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  transition: 0.4s;
+}
+
+.slider::before {
+  content: '';
+
+  background: #fff;
+
+  position: absolute;
+  left: 0.4rem;
+  bottom: 0.4rem;
+
+  width: 2.6rem;
+  height: 2.6rem;
+
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background: $primary-color;
+}
+
+input:checked + .slider::before {
+  transform: translateX(2.6rem);
+}
+
+.slider.round {
+  border-radius: 3.4rem;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+.fas {
+  font-size: 3rem;
+
+  margin-right: 0.5rem;
 }
