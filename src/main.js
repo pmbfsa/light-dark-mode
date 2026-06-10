@@ -12,9 +12,9 @@ const textBox = document.getElementById('text-box');
 
 // Get images for Light or Dark Mode
 function changeImageMode(mode) {
-  image1.src = `/svgs/undraw_web_developer_${mode}.svg`;
-  image2.src = `/svgs/undraw_click_interaction_${mode}.svg`;
-  image3.src = `/svgs/undraw_conference_call_${mode}.svg`;
+  image1.src = `./svgs/undraw_web_developer_${mode}.svg`;
+  image2.src = `./svgs/undraw_click_interaction_${mode}.svg`;
+  image3.src = `./svgs/undraw_conference_call_${mode}.svg`;
 }
 
 // Change elements styles to Dark Mode
