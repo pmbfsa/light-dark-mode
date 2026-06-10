@@ -18,17 +18,15 @@
 @use 'sass:string';
 
 // SASS Variables - Light Theme
-$primary-color-light: #ff5c5c;
-$primary-variant-light: #ff2d2d;
-$secondary-color-light: #1b9999;
+$primary-color-light: #e00000;
+$secondary-color-light: #157e7e;
 $on-primary-light: #fafafa;
 $on-background-light: #424242;
 $on-background-alt-light: rgba(66, 66, 66, 0.702);
 $background-light: #ffffff;
 
 // SASS Variables - Dark Theme
-$primary-color-dark: #9641ff;
-$primary-variant-dark: #6c63ff;
+$primary-color-dark: #b67aff;
 $secondary-color-dark: #03dac5;
 $on-primary-dark: #000;
 $on-background-dark: rgba(255, 255, 255, 0.902);
@@ -37,7 +35,6 @@ $background-dark: #121212;
 
 :root {
   --primary-color: #{$primary-color-light};
-  --primary-variant: #{$primary-variant-light};
   --secondary-color: #{$secondary-color-light};
   --on-primary: #{$on-primary-light};
   --on-background: #{$on-background-light};
@@ -52,7 +49,6 @@ $background-dark: #121212;
 
 :root[data-theme='dark'] {
   --primary-color: #{$primary-color-dark};
-  --primary-variant: #{$primary-variant-dark};
   --secondary-color: #{$secondary-color-dark};
   --on-primary: #{$on-primary-dark};
   --on-background: #{$on-background-dark};
@@ -112,7 +108,7 @@ h2 {
   text-align: center;
 
   color: var(--on-background-alt);
-  font-size: 3.2rem;
+  font-size: 2.5rem;
   font-weight: normal;
 }
 
@@ -436,7 +432,7 @@ input:checked + .slider::before {
 // Media Query: Large Mobile (432px)
 @media screen and (max-width: 27em) {
   h2 {
-    font-size: 6.4rem;
+    font-size: 5rem;
   }
 
   .about-container {

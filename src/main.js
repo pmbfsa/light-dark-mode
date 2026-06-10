@@ -1,6 +1,8 @@
 import './sass/style.scss';
 
 const toggleThemeSwitch = document.querySelector('input[type="checkbox"]');
+const title = document.getElementById('title');
+const subtitle = document.getElementById('subtitle');
 const toggleIcon = document.getElementById('toggle-icon');
 const nav = document.getElementById('nav');
 const image1 = document.getElementById('image1');
@@ -10,13 +12,15 @@ const textBox = document.getElementById('text-box');
 
 // Get images for Light or Dark Mode
 function changeImageMode(mode) {
-  image1.src = `/src/assets/svgs/undraw_proud_coder_${mode}.svg`;
-  image2.src = `/src/assets/svgs/undraw_feeling_proud_${mode}.svg`;
-  image3.src = `/src/assets/svgs/undraw_conceptual_idea_${mode}.svg`;
+  image1.src = `/svgs/undraw_web_developer_${mode}.svg`;
+  image2.src = `/svgs/undraw_click_interaction_${mode}.svg`;
+  image3.src = `/svgs/undraw_conference_call_${mode}.svg`;
 }
 
 // Change elements styles to Dark Mode
 function darkMode() {
+  title.textContent = 'Welcome to the dark side!';
+  subtitle.textContent = 'Enjoy yourself in the realm of shadow';
   nav.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
   textBox.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
   toggleIcon.children[0].textContent = 'Dark Mode';
@@ -26,6 +30,8 @@ function darkMode() {
 
 // Change elements styles to Light Mode
 function lightMode() {
+  title.textContent = 'Welcome to the light side!';
+  subtitle.textContent = 'Enjoy yourself in the realm of brightness';
   nav.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
   textBox.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
   toggleIcon.children[0].textContent = 'Light Mode';

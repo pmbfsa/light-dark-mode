@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pmbfsa.github.io/light-dark-mode/sitemap.xml
